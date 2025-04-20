@@ -1,0 +1,147 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+    List<Badminton.Models.tb_Product> vot = (List<Badminton.Models.tb_Product>)ViewData["Vot"];
+    List<Badminton.Models.tb_Product> giay = (List<Badminton.Models.tb_Product>)ViewData["Giay"];
+}
+
+<style>
+    
+    .items > p {
+        background-color: #ff0000;
+        padding: 10px 20px;
+        color: white;
+        width: 200px;
+        text-align: center;
+        position: absolute;
+        
+    }
+    .items {
+        text-decoration: none;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 30px;
+    }
+    .items img {
+        max-width: 340px;
+    }
+    .items:hover {
+        opacity: 50%;
+    }
+    td a{
+        text-decoration: none;
+        color: black;   
+    }
+    td a:hover {
+        opacity: 70%;
+    }
+</style>
+
+<main>
+    <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="~/Images/slide5.jpg" class="d-block" width="1200" height="800" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="~/Images/slide2.jpeg" class="d-block" width="1200" height="800" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="~/Images/slide4.jpg" class="d-block" width="1200" height="800" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="~/Images/slide1.jpg" class="d-block" width="1200" height="800" alt="...">
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <h1 class="text-center text-danger m-5">Sản phẩm HOT</h1>
+        <div id="carouselExample" class="carousel slide">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <table align="center">
+                        <tr>
+                            @foreach (var item in vot)
+                            {
+                                <td class="">
+                                    <a href="/tb_Product/ProductDetail/@item.id">
+                                        <div class="card" style="width: 250px; height: 400px;">
+                                            <img class="card-img-top" src="~/Images/@item.img" style="height: 250px;"/>
+                                            <div class="card-body">
+                                                <p style="height: 40px;">@item.title</p>
+                                                <p>@item.price_new đ</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                   
+                                </td>
+                            }
+                        </tr>
+                    </table>
+                </div>
+                <div class="carousel-item">
+                    <table align="center">
+                        <tr>
+                            @foreach (var item in giay)
+                            {
+                                <td>
+                                    <a href="/tb_Product/ProductDetail/@item.id">
+                                        <div class="card" style="width: 250px; height: 400px;">
+                                            <img class="card-img-top" src="~/Images/@item.img" style="height: 250px;"/>
+                                            <div class="card-body">
+                                                <p style="height: 40px;">@item.title</p>
+                                                <p>@item.price_new đ</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                   
+                                </td>
+                            }
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon text-bg-secondary" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                <span class="carousel-control-next-icon text-bg-secondary" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </div>
+
+
+    <div class="container ">
+        <h1 class="text-center text-danger m-5">Sản phẩm cầu lông</h1>
+        <div class="row">
+            <a href="/tb_Product/ProductsByCateID/1" class="items col">
+                <img src="~/Images/vot.png">
+                <p class="title">Vợt cầu lông</p>
+            </a>
+            <a href="/tb_Product/ProductsByCateID/2" class="items col">
+                <img src="~/Images/giay.png">
+                <p class="title">Giày cầu lông</p>
+            </a>
+            <a href="/tb_Product/ProductsByCateID/3" class="items col">
+                <img src="~/Images/ao.png">
+                <p class="title">Quần áo cầu lông</p>
+            </a>
+            <a href="/tb_Product/ProductsByCateID/4" class="items col">
+                <img src="~/Images/balo.png">
+                <p class="title">Ba lô cầu lông</p>
+            </a>
+            <a href="/tb_Product/ProductsByCateID/5" class="items col">
+                <img src="~/Images/tui.png">
+                <p class="title">Túi cầu lông</p>
+            </a>
+            <a href="/tb_Product/ProductsByCateID/6" class="items col">
+                <img src="~/Images/phukien.png">
+                <p class="title">Phụ kiện cầu lông</p>
+            </a>
+        </div>
+    </div>
+</main>

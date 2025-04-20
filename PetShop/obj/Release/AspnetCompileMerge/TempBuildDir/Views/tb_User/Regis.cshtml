@@ -1,0 +1,37 @@
+﻿
+@{
+    ViewBag.Title = "Đăng ký";
+}
+<style>
+    .btn-regis {
+        background-color: #E95211;
+        color: white;
+    }
+
+        .btn-regis:hover {
+            background-color: white;
+            color: #E95211;
+            border: 1px solid #E95211;
+        }
+    a {
+        text-decoration: none;
+        color: #E95211;
+    }
+</style>
+
+<div class="container mt-5">
+    <form action="/tb_User/Regising" method="post" class="text-center">
+        <h1 style="color: #E95211">ĐĂNG KÝ</h1>
+        <p>Đã có tài khoản, đăng nhập <a href="/tb_User/Login" class="">Tại đây</a></p>
+        <input type="text" name="name" class="form-control mb-3 m-auto" placeholder="Nhập tên của bạn" required/>
+        <input type="text" name="email" class="form-control mb-3 m-auto" placeholder="Nhập email của bạn" required/>
+        <input type="text" name="phone_number" class="form-control mb-3 m-auto" placeholder="Số điện thoại" required/>
+        <input type="password" name="password" class="form-control mb-3 m-auto" placeholder="Mật khẩu" required/>
+        <input type="password" name="repassword" class="form-control mb-3 m-auto" placeholder="Nhập lại mật khẩu" required/>
+        <button class="btn btn-regis form w-25 mb-3" type="submit">Đăng ký</button>
+    </form>
+</div>
+
+@if (ViewBag.msg != null) {
+    <div class="alert alert-danger w-25 m-auto mb-3">@ViewBag.msg</div>
+}

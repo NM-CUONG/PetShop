@@ -1,0 +1,112 @@
+﻿@model Badminton.Models.tb_Order
+@{
+    ViewBag.Title = "OrderDetail";
+}
+
+<style>
+    .btn_back {
+        background-color: #E95211;
+        color: white;
+    }
+
+        .btn_back:hover {
+            border: 1px solid #E95211;
+            color: #E95211;
+        }
+
+    .row {
+        padding: 10px;
+        margin: 10px;
+    }
+</style>
+
+<div class="container">
+    <h4>Chi tiết đơn hàng[@Model.id]</h4>
+    <a href="/tb_Order/ShowListOrder/@Model.userid" class="btn btn_back">Quay lại</a>
+
+    <div class="container" style="width: 800px;">
+        <div class="row">
+            <div class="col ">
+                Họ tên: <strong>@Model.fullname</strong>
+            </div>
+            <div class="col">
+                SĐT: <strong>@Model.sdt</strong>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col ">
+                Địa chỉ: <strong>@Model.addr</strong>
+            </div>
+            <div class="col">
+                Tình trạng: <strong>@Model.stt</strong>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col ">
+                Ngày đặt hàng: <strong>@Model.orderdate</strong>
+            </div>
+            <div class="col">
+                Ghi chú:
+            </div>
+        </div>
+    </div>
+
+    <div class="container border border-1">
+        <div class="row">
+            <div class="col col-6">
+                <strong>Sản phẩm</strong>
+            </div>
+            <div class="col col-2">
+                <strong>Đơn giá</strong>
+            </div>
+            <div class="col col-2">
+                <strong>Số lượng</strong>
+            </div>
+            <div class="col col-2">
+                <strong>Tổng</strong>
+            </div>
+        </div>
+        <hr />
+        @{
+            Badminton.Models.BadmintonContext db = new Badminton.Models.BadmintonContext();
+            var listOrderDetail = db.tb_OrderDetail.Where(p => p.order_id == Model.id).ToList();
+            long sum = 0;
+        }
+        @foreach (var item in listOrderDetail)
+        {
+            <div class="row">
+                <div class="col col-6">
+                    <div class="d-flex align-items-center justify-content-around pb-3">
+                        <div class="">
+                            <img src="~/Images/@item.tb_Product.img" alt="Ảnh sản phẩm" width="100" />
+                        </div>
+                        <div class="m-auto">
+                            <p style="font-size: 15px">@item.tb_Product.title</p>
+                            <p style="opacity: 80%; font-size: 12px">Size: <span class="opacity-50">@item.tb_Product.size</span></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col col-2 m-auto">
+                    @item.tb_Product.price_new đ
+                </div>
+                <div class="col col-2 m-auto">
+                    @item.num
+                </div>
+                <div class="col col-2 m-auto">
+                    @{ 
+                        long total = (long)item.tb_Product.price_new * item.num;
+                        sum += total;
+                    }
+                    @total đ
+                </div>
+            </div>
+            <hr />
+        }
+
+        <div class="row justify-content-end">
+            <div class="col col-3 fs-4">Tổng tiền: </div>
+            <div class="col col-3 text-danger fs-4">@sum đ</div>
+        </div>
+
+    </div>
+</div>

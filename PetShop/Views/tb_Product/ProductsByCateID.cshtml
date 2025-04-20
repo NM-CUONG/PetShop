@@ -1,0 +1,132 @@
+﻿@model IEnumerable<Badminton.Models.tb_Product> 
+@{
+    ViewBag.Title = "ProductsByCateID";
+}
+
+<style>
+    .container-breadcrumb {
+        background-color: #EEEEEE;
+    }
+
+    .breadcrumb {
+        padding: 10px 20px;
+    }
+
+    a {
+        text-decoration: none;
+        color: black;
+    }
+
+        a:hover {
+            color: #E95211;
+        }
+</style>
+
+<div class="container-breadcrumb container-fluid">
+    <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#" class="breadcrumb-item">Sản phẩm</a></li>
+            <li class="breadcrumb-item active" aria-current="page"><a href="#">@ViewData["cateName"]</a></li>
+        </ol>
+    </nav>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-3 border">
+            <div class="row p-4">
+                <h5 class="pb-3">CHỌN THƯƠNG HIỆU</h5>
+                <p class="fs-5" onclick="fill()">
+                    <input type="radio" id="yonex" name="brand" value="1" />
+                    <label for="yonex">Yonex</label>
+                </p>
+                <p class="fs-5" onclick="fill()">
+                    <input type="radio" id="lining" name="brand" value="2" />
+                    <label for="lining">Lining</label>
+                </p>
+                <p class="fs-5" onclick="fill()">
+                    <input type="radio" id="kawasaki" name="brand" value="3" />
+                    <label for="kawasaki">Kawasaki</label>
+                </p>
+                <p class="fs-5" onclick="fill()">
+                    <input type="radio" id="victor" name="brand" value="4" />
+                    <label for="victor">Victor</label>
+                </p>
+                <p class="fs-5" onclick="fill()">
+                    <input type="radio" id="kumpoo" name="brand" value="5" />
+                    <label for="kumpoo">Kumpoo</label>
+                </p>
+                <p class="fs-5" onclick="fill()">
+                    <input type="radio" id="mizuno" name="brand" value="6" />
+                    <label for="mizuno">Mizuno</label>
+                </p>
+
+            </div>
+        </div>
+        <div class="col-9 border">
+            <div class="row p-2 justify-content-between align-items-center" style="background-color: #EEEEEE">
+                <div class="fw-bold col-8 text-uppercase">@ViewData["cateName"]</div>
+                <div class="col-4">
+                    <p style="margin-top: 10px;">
+                        Sắp xếp: <select name="sort" id="sort" onchange="fill()">
+                            <option value="0">Mặc định</option>
+                            <option value="1">Từ A-Z</option>
+                            <option value="2">Từ Z-A</option>
+                            <option value="3">Giá tăng dần</option>
+                            <option value="4">Giá giảm dần</option>
+                        </select>
+                    </p>
+                </div>
+            </div>
+            <div class="row pt-3" id="products">
+                @{ foreach (var item in Model)
+                    {
+                        <div class="col col-lg-3 col-md-6 col-sm-12 card border-0">
+                            <a href="/tb_product/ProductDetail/?id=@item.id" class=" position-relative">
+                                <div style="min-height: 200px;"><img class="card-img" src="~/Images/@item.img" /></div>
+                                <div class="card-body">
+                                    <p class="card-title" style="min-height: 50px; font-size: 15px;">@item.title</p>
+                                    <h6 class="card-text text-danger">@item.price_new đ</h6>
+                                </div>
+                            </a>
+                        </div>
+                    }
+                }
+
+            </div>
+
+        </div>
+        
+    </div>
+
+</div>
+
+<script>
+
+    function fill() {
+        var itemselected = document.getElementById("sort");
+        s = itemselected.value;
+
+        var i=0;
+        var radios = document.getElementsByName("brand");
+        for (const radio of radios) {
+            if (radio.checked) {
+                i = radio.value;
+            }
+        }
+
+        var category = @ViewData["cateID"];
+
+        $.ajax({
+            url: '/tb_product/fill',
+            data: { id: i, sort: s, cate: category},
+            success: function (responsive) {    
+                  $("#products").html(responsive)
+            },
+            error: function () {
+                alert("Đã có lỗi xảy ra");
+            }
+        });
+    }
+   
+</script>

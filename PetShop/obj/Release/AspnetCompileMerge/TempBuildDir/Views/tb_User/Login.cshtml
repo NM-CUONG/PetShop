@@ -1,0 +1,42 @@
+﻿
+@{
+    ViewBag.Title = "Login";
+}
+
+<style>
+    .btn-login {
+        background-color: #E95211;
+        color: white;
+    }
+
+        .btn-login:hover {
+            background-color: white;
+            color: #E95211;
+            border: 1px solid #E95211;
+        }
+
+    a {
+        text-decoration: none;
+        color: black;
+        font-size: 90%;
+    }
+</style>
+
+<div class="container mt-5">
+    <form action="/tb_User/XLogin" method="post" class="text-center">
+        <h1 style="color: #E95211" class="m-4">ĐĂNG NHẬP</h1>
+        <input type="text" name="username" class="form-control mb-3 m-auto" placeholder="Email" required />
+        <input type="password" name="password" class="form-control mb-3 m-auto" placeholder="Mật khẩu" required />
+        <button class="btn btn-login form w-25 mb-3" type="submit">Đăng nhập</button>
+        <p>
+            <a href="#" class="p-3">Quên mật khẩu</a>
+            <a href="/tb_User/Regis" class="p-3">Đăng ký tài khoản</a>
+        </p>
+
+    </form>
+</div>
+
+@if (ViewBag.msg != null)
+            {
+                <div class="alert alert-danger">@ViewBag.msg</div>
+            }

@@ -1,0 +1,289 @@
+﻿@model Badminton.Models.tb_Product
+
+@{
+    ViewBag.Title = "ProductDetail";
+}
+
+<style>
+    .container-breadcrumb {
+        background-color: #EEEEEE;
+    }
+
+    .breadcrumb {
+        padding: 10px 20px;
+    }
+
+    a {
+        text-decoration: none;
+        color: black;
+    }
+
+    a:hover {
+        color: #E95211;
+    }
+    .newprice {
+        margin-right: 20px;
+    }
+    .btn-size {
+        width: 50px;
+        font-size: 12px;
+    }
+    .btn-size:hover {
+        background-color: #E95211;
+        color: white;
+    }
+    .btn-size:active {
+        background-color: #E95211;
+        color: white;
+    }
+   
+    .minus {
+        margin-right: 8px;
+        background-color: #E95211;
+        color: white;
+    }
+    .minus:hover {
+        background-color: #E95211;
+        color: white;
+    }
+    .plus {
+        margin-left: 8px;
+        background-color: #E95211;
+        color: white;
+    }
+    .plus:hover {
+        background-color: #E95211;
+        color: white;
+    }
+
+    .btn-add-to-cart {
+        margin-left: 10px;
+        background-color: #E95211;
+        color: white;
+    }
+    .btn-add-to-cart:hover {
+        background-color:white;
+        color: #E95211;
+        border: 1px solid;
+    }
+    
+
+    
+</style>
+    <div class="container-breadcrumb container-fluid">
+        <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="#" class="breadcrumb-item">Sản phẩm</a></li>
+                <li class="breadcrumb-item " aria-current="page"><a href="#">@Model.tb_Category.categoryname</a></li>
+                <li class="breadcrumb-item " aria-current="page"><a href="#">@Model.tb_Category.categoryname @Model.tb_Brand.brandname</a></li>
+                <li class="breadcrumb-item active" aria-current="page"><a href="#">@Model.title</a></li>
+            </ol>
+        </nav>
+    </div>
+
+    <div class="card mb-3">
+        <div class="row g-0">
+            <div class="col-md-5">
+                <img src="~/Images/@Model.img" width="400" class=" rounded-start" alt="...">
+            </div>
+            <div class="col-md-6">
+                <div class="card-body">
+                    <h3 class="card-title">@Model.title</h3>
+                    <p class="card-text">Mã: @Model.id</p>
+                    <p class="card-text">Thương hệu: @Model.tb_Brand.brandname</p>
+                    @{
+                        string status = "";
+                        if (Model.stt == true)
+                        {
+                            status = "Còn hàng";
+                        }
+                        else
+                        {
+                            status = "Hết hàng";
+                        }
+                        <p class="card-text">Tình trạng: @status</p>
+                    }
+
+                    <div class="d-flex">
+                        <div class="text-danger fs-4 newprice">@Model.price_new đ</div>
+                        <div class="opacity-50 fs-4 text-decoration-line-through">@Model.price đ</div>
+                    </div>
+
+                    @{
+                        if (Model.category_id == 1)
+                        {
+                            <div class="mt-3">
+                                Chọn size:
+                            </div>
+                            <div class="d-flex pb-3">
+                                <button class="btn btn-size border border-danger-subtle rounded m-1 p-2" onclick="change(this)" value="3UG5">3UG5</button>
+                                <button class="btn btn-size border border-danger-subtle rounded m-1 p-2" onclick="change(this)" value="4UG5">4UG5</button>
+                                <button class="btn btn-size border border-danger-subtle rounded m-1 p-2" onclick="change(this)" value="4UG6">4UG6</button>
+                            </div>
+                        }
+                        else
+                            if (Model.category_id == 2)
+                        {
+                            <div class="mt-3">
+                                Chọn size:
+                            </div>
+                            <div class="d-flex pb-3">
+                                <button class="btn btn-size border border-danger-subtle rounded m-1 p-2" onclick="change(this)" value="36">36</button>
+                                <button class="btn btn-size border border-danger-subtle rounded m-1 p-2" onclick="change(this)" value="37">37</button>
+                                <button class="btn btn-size border border-danger-subtle rounded m-1 p-2" onclick="change(this)" value="38">38</button>
+                                <button class="btn btn-size border border-danger-subtle rounded m-1 p-2" onclick="change(this)" value="39">39</button>
+                                <button class="btn btn-size border border-danger-subtle rounded m-1 p-2" onclick="change(this)" value="40">40</button>
+                                <button class="btn btn-size border border-danger-subtle rounded m-1 p-2" onclick="change(this)" value="41">41</button>
+                                <button class="btn btn-size border border-danger-subtle rounded m-1 p-2" onclick="change(this)" value="42">42</button>
+                                <button class="btn btn-size border border-danger-subtle rounded m-1 p-2" onclick="change(this)" value="43">43</button>
+                                <button class="btn btn-size border border-danger-subtle rounded m-1 p-2" onclick="change(this)" value="44">44</button>
+                                <button class="btn btn-size border border-danger-subtle rounded m-1 p-2" onclick="change(this)" value="45">45</button>
+                            </div>
+                        }
+                        else
+                            if (Model.category_id == 3)
+                        {
+                            <div class="mt-3">
+                                Chọn size:
+                            </div>
+                            <div class="d-flex pb-3">
+                                <button class="btn btn-size border border-danger-subtle rounded m-1 p-2" onclick="change(this)" value="S">S</button>
+                                <button class="btn btn-size border border-danger-subtle rounded m-1 p-2" onclick="change(this)" value="M">M</button>
+                                <button class="btn btn-size border border-danger-subtle rounded m-1 p-2" onclick="change(this)" value="L">L</button>
+                                <button class="btn btn-size border border-danger-subtle rounded m-1 p-2" onclick="change(this)" value="XL">XL</button>
+                                <button class="btn btn-size border border-danger-subtle rounded m-1 p-2" onclick="change(this)" value="XXL">XXL</button>
+                            </div>
+                        }
+
+                    }
+
+                    <div>
+                        <div class="d-flex" style="margin-top: 20px;">
+
+                            <button class="btn broder rounded-circle  minus" onclick="minus()">-</button>
+                            <input class="border rounded-3 text-center" id="input-quantity" size="10" type="text" value="1" />
+                            <button class="btn border rounded-circle plus" onclick="plus()">+</button>
+
+                            <form action="/tb_User/Confirm" method="post">
+                                <input value="@Model.title" style="display: none;" id="productname" name="productname" />
+                                <input value="@Model.id" style="display: none;" id="productid" name="productid" />
+                                <input value="" style="display: none;" id="productsize" name="productsize" />
+                                <input value="@Model.price_new" style="display: none;" id="productprice" name="productprice" />
+                                <input value="" style="display: none;" id="productquantity" name="productquantity" />
+                                <input value="@Model.img" style="display: none;" id="productimage" name="productimage" />
+
+                                <button class="rounded btn btn-add-to-cart" onclick="check()" type="reset" id="btn-addcart">Thêm vào giỏ hàng</button>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+        <h2>MÔ TẢ SẢN PHẨM</h2>
+        <p>@Model.descript</p>
+    </div>
+
+
+    
+    
+    <script>
+
+    @{ 
+        Badminton.Models.BadmintonContext db = new Badminton.Models.BadmintonContext();
+        var query = from p in db.tb_Product
+                    where p.title == Model.title
+                    select p.size;
+    }
+
+    //Hàm đổi màu nút chọn size đồng thời kiểm tra xem size còn trong kho không;
+    var productname = document.getElementById("productname");
+    var title = productname.value;
+
+    function change(button) {
+        var buttons = document.getElementsByClassName("btn-size");
+        if (button.style.color != "white") {
+            for (const bt of buttons) {
+                bt.style.color = "black";
+                bt.style.backgroundColor = "white";
+            }
+
+            var size = button.value;
+
+            $.ajax({
+                url: '/tb_product/checkSize',
+                data: { ProductName: title, Size: size },
+                success: function (respon) {
+
+                    if (respon.status == "yes") {
+                        button.style.color = "white";
+                        button.style.backgroundColor = "#E95211";
+                    } else {
+                        alert("Mặt hàng này hiện đã hết size bạn đang chọn");
+
+                    }
+
+                },
+                error: function () {
+                    alert("Đã có lỗi xảy ra");
+                }
+            });
+
+
+        }
+
+
+    }
+
+    //Hàm cộng trừ số lượng mua
+
+    function minus() {
+        var quantitytag = document.getElementById("input-quantity");
+        if (quantitytag.value > 1) {
+            quantitytag.value = quantitytag.value - 1;
+        }
+    }
+
+    function plus() {
+        var quantitytag = document.getElementById("input-quantity");
+        quantitytag.value++;
+    }
+
+    //Đổ dữ liệu vào form
+
+    function check() {
+        var quantity = document.getElementById("input-quantity").value;
+        var size;
+        var buttons = document.getElementsByClassName("btn-size");
+        var i = 0;
+
+        for (const bt of buttons) {
+            if (bt.style.color == "white") {
+                size = bt.value;
+                i = 1;
+                break;
+            }
+        }
+
+        var elementSize = document.getElementById("productsize");
+        var elementQuantity = document.getElementById("productquantity");
+
+        elementSize.value = size;
+        elementQuantity.value = quantity;
+
+        @{
+var cateId = Model.tb_Category.id;
+        }
+        var cateid = @cateId;
+        if (i == 1 || cateid > 3) {
+            var addCartTag = document.getElementById("btn-addcart");
+            addCartTag.type = "submit";
+        } else {
+            alert("Vui lòng chọn size");
+        }
+
+    }
+
+    </script>

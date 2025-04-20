@@ -1,0 +1,40 @@
+﻿@model IEnumerable<Badminton.Models.tb_Product>
+@{
+    ViewBag.Title = "Search";
+}
+
+<style>
+    a {
+        text-decoration: none;
+        color: black;
+    }
+
+        a:hover {
+            opacity: 70%;
+            color: #E95211;
+        }
+</style>
+
+<h2 style="margin-bottom: 20px;">Tìm kiếm sản phẩm [@ViewBag.searchString]</h2>
+
+<div class="container">
+    <div class="row">
+        @foreach (var item in Model )
+            {
+               <div class="col col-lg-3 col-md-4 col-sm-6" style="margin-bottom: 20px;">
+                   <a href="/tb_Product/ProductDetail/@item.id" class="card">
+                       <div class="card-header">
+                           <div class="" style="min-height: 250px;">
+                               <img class="card-img" src="~/Images/@item.img" />
+                           </div>
+                       </div>
+                       <div class="card-body">
+                           <p style="min-height: 50px;">@item.title</p>
+                           <p class="text-danger">@item.price đ</p>
+                       </div>
+                   </a>
+               </div>
+            }
+    </div>
+</div>
+

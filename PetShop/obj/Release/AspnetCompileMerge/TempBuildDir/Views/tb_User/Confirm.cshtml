@@ -1,0 +1,56 @@
+﻿
+<style>
+    .confirm {
+        width: 400px;
+        border: 1px solid #808080;
+        z-index: 2000;
+        display: block;
+        background-color: #eae3e3;
+        align-items: center;
+        margin-top: 100px;
+        border-radius: 20px;
+    }
+
+    .confirm-title {
+        text-align: center;
+        color: #E95211;
+        padding: 5px;
+    }
+
+    .btn-confirm {
+        border-radius: 10px;
+        border: 1px;
+        color: white;
+        padding: 10px;
+        width: 200px;
+    }
+
+        .btn-confirm:hover {
+            background-color: #E95211;
+            color: white;
+        }
+
+    .btn-buycontinue {
+        background-color: #646464;
+    }
+
+    .btn-showcart {
+        background-color: #ffd800;
+        color: black;
+    }
+    a {
+        text-decoration: none;
+        color: white;
+    }
+    a:hover {
+        color: white;
+    }
+</style>
+
+<div class="confirm container" id="confirm">
+    <p class="fw-bolder confirm-title">Thêm sản phẩm vào giỏ hàng thành công</p>
+    <div class="d-flex justify-content-center p-3"  >
+        <a class="btn btn-buycontinue btn-confirm m-2" href="/tb_Product/ShowAllProduct">Tiếp tục mua hàng</a>
+        <a class="btn btn-showcart btn-confirm m-2" href="/tb_User/Cart">Xem giỏ hàng</a>
+    </div>
+</div>

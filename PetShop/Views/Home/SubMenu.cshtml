@@ -1,0 +1,12 @@
+﻿@model IEnumerable<Badminton.Models.tb_Category>
+
+@{
+    foreach (var item in Model)
+    {
+        var url = "productsByCateID/CateID/" + item.id;
+        <li>
+            @Html.ActionLink(item.categoryname, "ProductsByCateID", "tb_Product", new { id = item.id}, new {@class = "nav-link"})
+        </li>
+
+    }
+}

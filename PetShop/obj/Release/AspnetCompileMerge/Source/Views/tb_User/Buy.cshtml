@@ -1,0 +1,55 @@
+﻿
+@{
+    ViewBag.Title = "Buy";
+}
+
+<style>
+    h2 {
+        color: #E95211;
+    }
+    .btn_confirm {
+        background-color: #E95211;
+        color: white;
+    }
+    .btn_confirm:hover {
+        color: #E95211;
+        border: 1px solid #E95211;
+    }
+</style>
+<div class="container">
+    <h2 class="text-uppercase">LDshop</h2>
+    <form action="/tb_OrderDetail/SaveOrder" method="post">
+        <div class="row">
+            <div class="col">
+                <h4>Thông tin nhận hàng</h4>
+                <div class="d-flex flex-column justify-content-evenly">
+                    <input class="p-3 form-control m-2" type="text" name="name" placeholder="Họ và tên người nhận hàng" required/>
+                    <input class="p-3 form-control m-2" type="text" name="phone_Number" placeholder="Số điện thoại" required/>
+                    <input class="p-3 form-control m-2" type="text" name="address" placeholder="Địa chỉ" required/>
+                </div>
+            </div>
+            <div class="col ">
+                <h4>Thanh toán</h4>
+                <div class="row border border-1 p-3 rounded-2 mb-4">
+                    <p>
+                        <input type="radio" name="bank" value="" /> Thanh toán khi nhận hàng
+                    </p>
+                    <p>
+                        <input type="radio" name="bank" value="" data-bs-toggle="collapse" data-bs-target="#BANK" /> Thanh toán qua ngân hàng
+                        <div class="collapse" id="BANK" style="background-color: #EEEEEE">
+                            <p>Tên tài khoản: Nguyễn Mạnh Cường</p>
+                            <p>STK: 0206200299</p>
+                            <p>Ngân hàng: SHB (TMCP Sài Gòn Hà Nội)</p>
+                            <p>(Nội dung chuyển khoản: Tên + SĐT đặt hàng)</p>
+                        </div>
+                    </p>
+                </div>
+                <div class="row">
+                    <button class="btn btn_confirm" type="submit">Xác nhận đặt hàng</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+

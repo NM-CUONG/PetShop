@@ -1,0 +1,113 @@
+﻿@{
+    ViewBag.Title = "Cart";
+}
+
+<style>
+    .container-breadcrumb {
+        background-color: #EEEEEE;
+    }
+
+    .breadcrumb {
+        padding: 10px 20px;
+    }
+
+    a {
+        text-decoration: none;
+        color: black;
+    }
+
+        a:hover {
+            color: #E95211;
+        }
+
+    .btn_delete {
+        background: #E95211;
+        color: white;
+    }
+
+        .btn_delete:hover {
+            color: #E95211;
+            border: 1px solid #E95211;
+        }
+
+    .btn_buy {
+        color: white;
+        background-color: #E95211;
+        width: 100%;
+    }
+
+        .btn_buy:hover {
+            color: #E95211;
+            border: 1px solid #E95211;
+        }
+</style>
+
+@{
+    double totaloftotal = 0;
+    if (Session["cart"] == null)
+    {
+        <h1>Giỏ hàng của bạn đang trống</h1>
+    }
+    else
+    {
+        List<Badminton.Models.ProductSelected> list = (List<Badminton.Models.ProductSelected>)Session["cart"];
+
+        <div class="container-breadcrumb container-fluid">
+            <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#" class="breadcrumb-item">Trang chủ</a></li>
+                    <li class="breadcrumb-item active" aria-current="page"><a href="#">Giỏ hàng</a></li>
+                </ol>
+            </nav>
+        </div>
+
+        <div class="container">
+            <h4 class="text-uppercase">Giỏ hàng</h4>
+
+
+            @foreach (var item in list)
+            {
+                <div class="d-flex align-items-center justify-content-around pb-3">
+                    <div class="">
+                        <img src="~/Images/@item.productImage" alt="Ảnh sản phẩm" width="150"/>
+                    </div>
+                    <div class="">
+                        <p style="font-size: 20px; width: 300px;">@item.productName</p>
+                        <p style="opacity: 60%; font-size: 15px">@item.productSize</p>
+                    </div>
+                    <div class="control">
+                        <div value="@item.productQuantity" size="5" class="text-center" style="border: none;">Số lượng: @item.productQuantity</div>
+                    </div>
+                    <div class="price">
+                        <div class="text-danger">
+                            Thành tiền:
+                            @{ 
+                                double total = item.productPrice * item.productQuantity;
+                                totaloftotal += total;
+                            }
+                            @total đ
+                        </div>
+                    </div>
+                    <div class="">
+                        <a href="/tb_User/DeleteCart/?id=@item.id" class="btn rounded-circle btn_delete">x</a>
+                    </div>
+                </div>
+                <hr />
+            }
+
+            <div class="total">
+                <div class="row">
+                    <p class="text-uppercase h5 col col-8">Tổng tiền: </p>
+                    <p class=" col col-2 total-money text-danger fs-5 fw-bold" style="float: right; transform: translateY(-5px)">@totaloftotal đ</p>
+                </div>
+                    <a href="/tb_User/Buy" class="btn btn_buy text-uppercase">Đặt hàng</a>
+            </div>
+        </div>
+    }
+}
+
+<script>
+
+</script>
+
+

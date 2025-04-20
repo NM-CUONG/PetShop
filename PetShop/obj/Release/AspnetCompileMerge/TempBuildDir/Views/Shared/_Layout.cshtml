@@ -1,0 +1,124 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LDSHOP</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="~/Images/favicon.ico">
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <style>
+        .menu {
+            background-color: #E95211 !important;
+        }
+        .nav-link, .navbar-brand {
+            color: white;
+        }
+        .acc {
+            justify-content: flex-end;
+        }
+        .footer {
+            background-color: #E95211;
+            color: white;
+            padding: 20px;
+        }
+        .body-content{
+            min-height: 1000px;
+        }        
+        .submenu {
+            position: relative;
+        }
+        .sub-menu {
+            display: none;
+            position: absolute;
+            border: 1px solid #EEEEEE;
+            background-color: white;
+            width:max-content;
+            z-index: 1000;
+        }
+        .submenu:hover .sub-menu {
+            display: flex;
+            flex-direction: column;
+           
+        }
+        .sub-menu li a {
+            color: #E95211;
+            padding: 10px;
+        }
+        .sub-menu li a:hover {
+            color: black;
+        }
+        .sub-menu li {
+            border-bottom: 1px solid silver;
+        }
+
+        
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm menu">
+        <div class="container">
+            @Html.ActionLink("LDSHOP", "Index", "Home", new { area = "" }, new { @class = "navbar-brand fw-bold" })
+            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Toggle navigation" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
+                <ul class="navbar-nav flex-grow-1">
+                    <li class="submenu">
+                        @Html.ActionLink("SẢN PHẨM", "ShowAllProduct", "tb_Product" , new { area = ""}, new { @class = "nav-link fw-bold"})
+                        <ul class="sub-menu navbar-nav">
+                            @{ Html.RenderAction("SubMenu", "Home");}   
+                        </ul>
+                    </li>
+                    <li>@Html.ActionLink("GIỚI THIỆU", "About", "Home", new { area = "" }, new { @class = "nav-link fw-bold" })</li>
+                    <li>@Html.ActionLink("LIÊN HỆ", "Contact", "Home", new { area = "" }, new { @class = "nav-link fw-bold" })</li>
+                </ul>
+            </div>
+
+            <form class="d-flex timkiem" role="search" action="/tb_Product/Search" method="post">
+                <input class="form-control me-2" type="search" placeholder="Tìm kiếm sản phẩm..." aria-label="Search" name="searchString">
+                <button class="btn btn-success" type="submit">Search</button>
+            </form>
+            @{
+                if (Session["account"] == null)
+                {
+                    <div class="collapse navbar-collapse d-sm-inline-flex acc">
+                        <ul class="navbar-nav flex-grow">
+                            <li>@Html.ActionLink("Giỏ hàng", "Cart", "tb_User", new { area = "" }, new { @class = "nav-link fw-bold" })</li>
+                            <li>@Html.ActionLink("Đăng nhập", "Login", "tb_User", new { area = "" }, new { @class = "nav-link fw-bold" })</li>
+                            <li>@Html.ActionLink("Đăng ký", "Regis", "tb_User", new { area = "" }, new { @class = "nav-link fw-bold" })</li>
+                        </ul>
+                    </div>
+                }
+                else
+                {
+                    <div class="collapse navbar-collapse d-sm-inline-flex acc">
+                        <ul class="navbar-nav flex-grow">
+                            <li><a href="/tb_Order/ShowListOrder/@Session["account"]" class="nav-link fw-bold">Đơn hàng</a></li>
+                            <li>@Html.ActionLink("Giỏ hàng", "Cart", "tb_User", new { area = "" }, new { @class = "nav-link fw-bold" })</li>
+                            <li>@Html.ActionLink("Đăng xuất", "Logout", "tb_User", new { area = "" }, new { @class = "nav-link fw-bold" })</li>
+                        </ul>
+                    </div>
+                }
+            }
+
+        </div>
+    </nav>
+    <div class="container body-content">
+        @RenderBody()
+
+    </div>
+    <footer style="margin-top: 20px;">
+        <div class="text-center footer container-fluid">
+            <p>CÔNG TY TNHH LINDAN BADMINTON</p>
+            <p>SĐT: 0967983709</p>
+            <p>EMAIL: nguyenmanhcuong02062002@gmail.com</p>
+            <p>Địa chỉ: phố Văn Trì, Minh Khai, Bắc Từ Liêm, Hà Nội</p>
+        </div>
+    </footer>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

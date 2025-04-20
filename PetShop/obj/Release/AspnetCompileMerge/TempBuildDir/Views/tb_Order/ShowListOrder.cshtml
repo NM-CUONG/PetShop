@@ -1,0 +1,63 @@
+﻿@model IEnumerable<Badminton.Models.tb_Order>
+@{
+    ViewBag.Title = "ShowListOrder";
+}
+
+<h3 class="text-uppercase">đơn hàng của bạn</h3>
+
+<style>
+    th, td {
+        border: 1px solid Silver;
+        text-align: center;
+        padding: 10px 30px;
+    }
+    th {
+        color: white;  
+        background-color: #E95211;
+        font-size: 15px;
+        font-weight: 600;
+    }
+    table {
+        margin-top: 20px;
+        border-collapse: collapse;
+    }
+    a {
+        text-decoration: none;
+    }
+</style>
+
+<table>
+    <tr>
+        <th>Đơn hàng</th>
+        <th>Ngày</th>
+        <th>Địa chỉ</th>
+        <th>Giá trị</th>
+        <th>Tình trạng</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td><a href="/tb_OrderDetail/ShowOrderDetail/@item.id">@item.id</a></td>
+            <td>@item.orderdate</td>
+            <td>@item.addr</td>
+            <td>
+                @{ 
+                    Badminton.Models.BadmintonContext db = new Badminton.Models.BadmintonContext();
+                    var listOrderProducts = db.tb_OrderDetail.Where(p => p.order_id == item.id).ToList();
+                    long total = 0;
+                    foreach (var product in listOrderProducts)
+                    {
+                        total += (long)product.tb_Product.price_new * product.num;
+                    }
+                }
+                @total đ
+            </td>
+            <td>
+                @item.stt
+            </td>
+        </tr>
+    }
+</table>
+
+
+
