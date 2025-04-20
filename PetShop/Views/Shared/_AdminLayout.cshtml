@@ -46,6 +46,7 @@
             </button>
             <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
                 <ul class="navbar-nav flex-grow-1">
+                    <li>@Html.ActionLink("Trang chủ", "Index", "Home", new { area = "" }, new { @class = "nav-link" })</li>
                     <li>@Html.ActionLink("Quản lý người dùng", "Index", "tb_User", new { area = "" }, new { @class = "nav-link" })</li>
                     <li>@Html.ActionLink("Quản lý thương hiệu", "Index", "tb_Brand", new { area = "" }, new { @class = "nav-link" })</li>
                     <li>@Html.ActionLink("Quản lý danh mục", "Index", "tb_Category", new { area = "" }, new { @class = "nav-link" })</li>

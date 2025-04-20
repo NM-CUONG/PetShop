@@ -73,7 +73,7 @@
                     </div>
                     <div class="">
                         <p style="font-size: 20px; width: 300px;">@item.productName</p>
-                        <p style="opacity: 60%; font-size: 15px">@item.productSize</p>
+                        <p style="opacity: 60%; font-size: 15px">@(item.productSize == "undefined" ? "": item.productSize)</p>
                     </div>
                     <div class="control">
                         <div value="@item.productQuantity" size="5" class="text-center" style="border: none;">Số lượng: @item.productQuantity</div>

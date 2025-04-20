@@ -119,6 +119,8 @@ namespace Badminton.Controllers
             ViewData["cateName"] = cateName;
             ViewData["cateID"] = id;
 
+            ViewBag.lstBrand = db.tb_Brand.ToList();
+
             var list = db.tb_Product.Where(p => p.category_id == id).ToList();
 
             return View(list);

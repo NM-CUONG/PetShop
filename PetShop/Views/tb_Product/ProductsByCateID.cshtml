@@ -3,6 +3,11 @@
     ViewBag.Title = "ProductsByCateID";
 }
 
+@{ 
+    var lstBrand = ViewBag.lstBrand as List<Badminton.Models.tb_Brand>;
+}
+
+
 <style>
     .container-breadcrumb {
         background-color: #EEEEEE;
@@ -36,30 +41,16 @@
         <div class="col-3 border">
             <div class="row p-4">
                 <h5 class="pb-3">CHỌN THƯƠNG HIỆU</h5>
-                <p class="fs-5" onclick="fill()">
-                    <input type="radio" id="yonex" name="brand" value="1" />
-                    <label for="yonex">Yonex</label>
-                </p>
-                <p class="fs-5" onclick="fill()">
-                    <input type="radio" id="lining" name="brand" value="2" />
-                    <label for="lining">Lining</label>
-                </p>
-                <p class="fs-5" onclick="fill()">
-                    <input type="radio" id="kawasaki" name="brand" value="3" />
-                    <label for="kawasaki">Kawasaki</label>
-                </p>
-                <p class="fs-5" onclick="fill()">
-                    <input type="radio" id="victor" name="brand" value="4" />
-                    <label for="victor">Victor</label>
-                </p>
-                <p class="fs-5" onclick="fill()">
-                    <input type="radio" id="kumpoo" name="brand" value="5" />
-                    <label for="kumpoo">Kumpoo</label>
-                </p>
-                <p class="fs-5" onclick="fill()">
-                    <input type="radio" id="mizuno" name="brand" value="6" />
-                    <label for="mizuno">Mizuno</label>
-                </p>
+                @if (lstBrand != null && lstBrand.Any())
+                {
+                    foreach (var item in lstBrand)
+                    {
+                        <p class="fs-5" onclick="fill()">
+                            <input type="radio" id="@item.id" name="brand" value="@item.id" />
+                            <label for="@item.id">@item.brandname</label>
+                        </p>
+                    }
+                }
 
             </div>
         </div>

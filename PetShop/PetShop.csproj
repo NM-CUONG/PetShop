@@ -199,6 +199,9 @@
     <Content Include="Images\slide3.jpg" />
     <Content Include="Images\slide4.jpg" />
     <Content Include="Images\slide5.jpg" />
+    <Content Include="Images\Slider\anhcho.jpg" />
+    <Content Include="Images\Slider\anhmeo.jpg" />
+    <Content Include="Images\Slider\doan.jpg" />
     <Content Include="Images\tui.png" />
     <Content Include="Images\vot.png" />
     <Content Include="Scripts\bootstrap.bundle.js" />
