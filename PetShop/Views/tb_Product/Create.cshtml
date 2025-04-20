@@ -6,13 +6,14 @@
 
 }
 
-@using (Html.BeginForm("Create", "tb_Product", FormMethod.Post, 
-    new {enctype = "multipart/form-data"})) 
+<h2>Thêm mới sản phẩm</h2>
+
+@using (Html.BeginForm("Create", "tb_Product", FormMethod.Post,
+    new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
-        <h4>Thêm mới sản phẩm</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group my-3">
@@ -45,8 +46,8 @@
 
                 @Html.ValidationMessageFor(model => model.img, "", new { @class = "text-danger" })
             </div>
-            <img id="output" src="~/Images/noimage.png" class="img-fluid" width="200"/>
-            <input type="file" name="ufile" id="ufile" onchange="loadFile(event)"/>
+            <img id="output" src="~/Images/noimage.png" class="img-fluid" width="200" />
+            <input type="file" name="ufile" id="ufile" onchange="loadFile(event)" />
         </div>
 
         <div class="form-group my-3">
@@ -93,14 +94,14 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Hoàn thành" class="btn btn-default" />
             </div>
         </div>
     </div>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Trở về", "Index")
 </div>
 
 <script>
