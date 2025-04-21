@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
 using System.Linq;
 
-namespace Badminton.Models
+namespace PetShop.Models
 {
     public partial class ShopContext : DbContext
     {

@@ -9,9 +9,9 @@ using System.Security.Cryptography;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.WebPages;
-using Badminton.Models;
+using PetShop.Models;
 
-namespace Badminton.Controllers
+namespace PetShop.Controllers
 {
     public class tb_UserController : Controller
     {

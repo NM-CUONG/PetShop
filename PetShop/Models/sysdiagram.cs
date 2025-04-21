@@ -1,4 +1,4 @@
-namespace Badminton.Models
+namespace PetShop.Models
 {
     using System;
     using System.Collections.Generic;

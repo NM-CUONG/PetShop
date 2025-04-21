@@ -8,9 +8,9 @@ using System.Web;
 using System.Web.DynamicData;
 using System.Web.Mvc;
 using System.Web.Services.Description;
-using Badminton.Models;
+using PetShop.Models;
 
-namespace Badminton.Controllers
+namespace PetShop.Controllers
 {
     public class tb_OrderDetailController : Controller
     {

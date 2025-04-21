@@ -1,7 +1,8 @@
 ﻿@{
     ViewBag.Title = "Home Page";
-    List<Badminton.Models.tb_Product> vot = (List<Badminton.Models.tb_Product>)ViewData["Vot"];
-    List<Badminton.Models.tb_Product> giay = (List<Badminton.Models.tb_Product>)ViewData["Giay"];
+    List<PetShop.Models.tb_Product> vot = (List<PetShop.Models.tb_Product>)ViewData["Vot"];
+    List<PetShop.Models.tb_Product> giay = (List<PetShop.Models.tb_Product>)ViewData["Giay"];
+    var categories = ViewBag.categories as List<PetShop.Models.tb_Category>;
 }
 
 <style>
@@ -42,13 +43,10 @@
     <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img src="~/Images/Slider/anhcho.jpg" class="d-block w-100" alt="...">
+                <img src="~/Images/Slider/anh1oce.png" class="d-block w-100" alt="...">
             </div>
             <div class="carousel-item">
-                <img src="~/Images/Slider/anhmeo.jpg" class="d-block w-100" alt="...">
-            </div>
-            <div class="carousel-item">
-                <img src="~/Images/Slider/doan.jpg" class="d-block w-100" alt="...">
+                <img src="~/Images/Slider/anh2oce.png" class="d-block w-100" alt="...">
             </div>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
@@ -119,9 +117,8 @@
         </div>
     </div>
 
-
     <div class="container ">
-        <h1 class="text-center text-danger m-5">Sản phẩm cầu lông</h1>
+        <h1 class="text-center text-danger m-5">Sản phẩm chó mèo</h1>
         <div class="row">
             <a href="/tb_Product/ProductsByCateID/1" class="items col">
                 <img src="~/Images/vot.png">

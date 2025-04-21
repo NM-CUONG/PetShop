@@ -1,4 +1,4 @@
-﻿@model Badminton.Models.tb_Order
+﻿@model PetShop.Models.tb_Order
 @{
     ViewBag.Title = "OrderDetail";
 }
@@ -68,7 +68,7 @@
         </div>
         <hr />
         @{
-            Badminton.Models.ShopContext db = new Badminton.Models.ShopContext();
+            PetShop.Models.ShopContext db = new PetShop.Models.ShopContext();
             var listOrderDetail = db.tb_OrderDetail.Where(p => p.order_id == Model.id).ToList();
             long sum = 0;
         }

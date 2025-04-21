@@ -1,11 +1,11 @@
-﻿using Badminton.Models;
+﻿using PetShop.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace Badminton.Controllers
+namespace PetShop.Controllers
 {
     public class HomeController : Controller
     {
@@ -32,6 +32,9 @@ namespace Badminton.Controllers
 
             var giay = db.tb_Product.Where(p => p.category_id == 2).OrderBy(p => p.price_new).Take(4).ToList();
             ViewData["Giay"] = giay;
+
+            var categories = db.tb_Category.Take(6).ToList();
+            ViewBag.categories = categories;
 
             return View();
         }

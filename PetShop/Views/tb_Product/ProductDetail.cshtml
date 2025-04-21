@@ -1,4 +1,4 @@
-﻿@model Badminton.Models.tb_Product
+﻿@model PetShop.Models.tb_Product
 
 @{
     ViewBag.Title = "ProductDetail";
@@ -191,7 +191,7 @@
     <script>
 
     @{ 
-        Badminton.Models.ShopContext db = new Badminton.Models.ShopContext();
+        PetShop.Models.ShopContext db = new PetShop.Models.ShopContext();
         var query = from p in db.tb_Product
                     where p.title == Model.title
                     select p.size;

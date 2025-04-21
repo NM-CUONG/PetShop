@@ -9,10 +9,10 @@ using System.Security;
 using System.Web;
 using System.Web.Helpers;
 using System.Web.Mvc;
-using Badminton.Models;
+using PetShop.Models;
 using Microsoft.Ajax.Utilities;
 
-namespace Badminton.Controllers
+namespace PetShop.Controllers
 {
     public class tb_ProductController : Controller
     {

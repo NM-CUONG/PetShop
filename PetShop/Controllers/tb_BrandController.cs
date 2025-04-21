@@ -6,9 +6,9 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using Badminton.Models;
+using PetShop.Models;
 
-namespace Badminton.Controllers
+namespace PetShop.Controllers
 {
     public class tb_BrandController : Controller
     {
