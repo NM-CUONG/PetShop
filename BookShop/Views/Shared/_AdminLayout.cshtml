@@ -1,0 +1,126 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - BOOKSHOP</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="~/Images/favicon.ico">
+
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
+    <style>
+        .menu {
+            background-color: #1974D3 !important;
+        }
+
+        .nav-link, .navbar-brand {
+            color: white;
+        }
+
+        .acc {
+            justify-content: flex-end;
+        }
+
+        .footer {
+            background-color: #1974D3;
+            color: white;
+            padding: 20px;
+        }
+
+        .body-content {
+            min-height: 1000px;
+        }
+
+        .submenu {
+            position: relative;
+        }
+
+        .sub-menu {
+            display: none;
+            position: absolute;
+            border: 1px solid #EEEEEE;
+            background-color: white;
+            width: max-content;
+            z-index: 1000;
+        }
+
+        .submenu:hover .sub-menu {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .sub-menu li a {
+            color: #1974D3;
+            padding: 10px;
+        }
+
+            .sub-menu li a:hover {
+                color: black;
+            }
+
+        .sub-menu li {
+            border-bottom: 1px solid silver;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark menu">
+        <div class="container">
+            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Toggle navigation" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
+                <ul class="navbar-nav flex-grow-1">
+                    <li>@Html.ActionLink("Trang chủ", "Index", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+                    <li>@Html.ActionLink("Quản lý người dùng", "Index", "tb_User", new { area = "" }, new { @class = "nav-link" })</li>
+                    <li>@Html.ActionLink("Quản lý thương hiệu", "Index", "tb_Brand", new { area = "" }, new { @class = "nav-link" })</li>
+                    <li>@Html.ActionLink("Quản lý danh mục", "Index", "tb_Category", new { area = "" }, new { @class = "nav-link" })</li>
+                    <li>@Html.ActionLink("Quản lý sản phẩm", "Index", "tb_Product", new { area = "" }, new { @class = "nav-link" })</li>
+                    <li>@Html.ActionLink("Quản lý đơn hàng", "Index", "tb_Order", new { area = "" }, new { @class = "nav-link" })</li>
+                    <li>@Html.ActionLink("Quản lý chi tiết đơn hàng", "Index", "tb_OrderDetail", new { area = "" }, new { @class = "nav-link" })</li>
+                    <li>@Html.ActionLink("Đăng xuất", "Logout", "tb_User", new { area = "" }, new { @class = "nav-link" })</li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container body-content">
+        @RenderBody()
+
+    </div>
+    <footer class=" text-white pt-5 pb-4 mt-3 footer">
+        <div class="container text-center text-md-left">
+            <div class="row text-center text-md-left">
+
+                <div class="col-md-4 col-lg-4 col-xl-4 mx-auto mt-3">
+                    <h5 class="text-uppercase mb-4 fw-bold text-light">Thư viện Tri Thức</h5>
+                    <p>Sách là người bạn tuyệt vời của chi thức – nơi khơi nguồn đam mê học tập và khám phá thế giới.</p>
+                </div>
+
+                <div class="col-md-4 col-lg-4 col-xl-4 mx-auto mt-3">
+                    <h5 class="text-uppercase mb-4 fw-bold text-light">Liên hệ</h5>
+                    <p><i class="bi bi-telephone-fill me-2"></i>0123 456 789</p>
+                    <p><i class="bi bi-envelope-fill me-2"></i>email@gmail.com</p>
+                    <p><i class="bi bi-geo-alt-fill me-2"></i>Quận 1, TPHCM</p>
+                </div>
+
+                <div class="col-md-4 col-lg-4 col-xl-4 mx-auto mt-3">
+                    <h5 class="text-uppercase mb-4 fw-bold text-light">Theo dõi chúng tôi</h5>
+                    <a class="btn btn-outline-light btn-floating m-1" href="#"><i class="bi bi-facebook"></i></a>
+                    <a class="btn btn-outline-light btn-floating m-1" href="#"><i class="bi bi-twitter"></i></a>
+                    <a class="btn btn-outline-light btn-floating m-1" href="#"><i class="bi bi-instagram"></i></a>
+                    <a class="btn btn-outline-light btn-floating m-1" href="#"><i class="bi bi-youtube"></i></a>
+                </div>
+
+            </div>
+
+        </div>
+    </footer>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

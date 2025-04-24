@@ -1,0 +1,207 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+    var hot1 = ViewBag.hot1 as List<BookShop.Models.tb_Product>;
+    var hot2 = ViewBag.hot2 as List<BookShop.Models.tb_Product>;
+    var moive1 = ViewBag.moive1 as List<BookShop.Models.tb_Product>;
+    var moive2 = ViewBag.moive2 as List<BookShop.Models.tb_Product>;
+}
+
+<style>
+
+    .items > p {
+        background-color: #ff0000;
+        padding: 10px 20px;
+        color: white;
+        width: 200px;
+        text-align: center;
+        position: absolute;
+    }
+
+    .items {
+        text-decoration: none;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 30px;
+    }
+
+        .items img {
+            max-width: 340px;
+        }
+
+        .items:hover {
+            opacity: 50%;
+        }
+
+    td a {
+        text-decoration: none;
+        color: black;
+    }
+
+        td a:hover {
+            opacity: 70%;
+        }
+
+    .texttt {
+        color: #1974D3;
+    }
+</style>
+
+<main>
+    <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="~/Images/Slider/home_slider_image_2.png" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="~/Images/Slider/home_slider_image_4.png" class="d-block w-100" alt="...">
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+
+    @if ((hot1 != null && hot1.Any()) || (hot2 != null && hot2.Any()))
+    {
+        <div class="container">
+            <h1 class="text-center m-5 texttt">Sản phẩm HOT</h1>
+            <div id="carouselExample" class="carousel slide">
+                <div class="carousel-inner">
+                    @if (hot1 != null && hot1.Any())
+                    {
+                        <div class="carousel-item active">
+                            <table align="center">
+                                <tr>
+                                    @foreach (var item in hot1)
+                                    {
+                                        <td class="">
+                                            <a href="/tb_Product/ProductDetail/@item.id">
+                                                <div class="card" style="width: 250px; height: 400px;">
+                                                    <img class="card-img-top" src="~/Images/@item.img" style="height: 250px;" />
+                                                    <div class="card-body">
+                                                        <p style="height: 40px;">@item.title</p>
+                                                        <p class="text-danger">@item.price_new đ</p>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </td>
+                                    }
+                                </tr>
+                            </table>
+                        </div>
+                    }
+
+                    @if (hot2 != null && hot2.Any())
+                    {
+                        <div class="carousel-item">
+                            <table align="left">
+                                <tr>
+                                    @foreach (var item in hot2)
+                                    {
+                                        <td>
+                                            <a href="/tb_Product/ProductDetail/@item.id">
+                                                <div class="card" style="width: 250px; height: 400px;">
+                                                    <img class="card-img-top" src="~/Images/@item.img" style="height: 250px;" />
+                                                    <div class="card-body">
+                                                        <p style="height: 40px;">@item.title</p>
+                                                        <p class="text-danger">@item.price_new đ</p>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </td>
+                                    }
+                                </tr>
+                            </table>
+                        </div>
+                    }
+
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon text-bg-secondary" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                    <span class="carousel-control-next-icon text-bg-secondary" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+
+    }
+
+    @if ((moive1 != null && moive1.Any()) || (moive2 != null && moive2.Any()))
+    {
+        <div class="container">
+            <h1 class="text-center m-5 texttt">Sản phẩm MỚI VỀ</h1>
+            <div id="carouselExample2" class="carousel slide">
+                <div class="carousel-inner">
+                    @if (moive1 != null && moive1.Any())
+                    {
+                        <div class="carousel-item active">
+                            <table align="center">
+                                <tr>
+                                    @foreach (var item in moive1)
+                                    {
+                                        <td class="">
+                                            <a href="/tb_Product/ProductDetail/@item.id">
+                                                <div class="card" style="width: 250px; height: 400px;">
+                                                    <img class="card-img-top" src="~/Images/@item.img" style="height: 250px;" />
+                                                    <div class="card-body">
+                                                        <p style="height: 40px;">@item.title</p>
+                                                        <p class="text-danger">@item.price_new đ</p>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </td>
+                                    }
+                                </tr>
+                            </table>
+                        </div>
+                    }
+
+                    @if (moive2 != null && moive2.Any())
+                    {
+                        <div class="carousel-item">
+                            <table align="left">
+                                <tr>
+                                    @foreach (var item in moive2)
+                                    {
+                                        <td>
+                                            <a href="/tb_Product/ProductDetail/@item.id">
+                                                <div class="card" style="width: 250px; height: 400px;">
+                                                    <img class="card-img-top" src="~/Images/@item.img" style="height: 250px;" />
+                                                    <div class="card-body">
+                                                        <p style="height: 40px;">@item.title</p>
+                                                        <p class="text-danger">@item.price_new đ</p>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </td>
+                                    }
+                                </tr>
+                            </table>
+                        </div>
+                    }
+
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample2" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon text-bg-secondary" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExample2" data-bs-slide="next">
+                    <span class="carousel-control-next-icon text-bg-secondary" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+
+    }
+
+</main>
